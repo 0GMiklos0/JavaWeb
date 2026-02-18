@@ -26,4 +26,13 @@ public class BaseUserServiceImpl implements BaseUserService{
                 .stream()
                 .toList();
     }
+
+    public BaseUser findOne(String userName){
+        return repo.findByUserName(userName).orElseThrow();
+    }
+
+    @Override
+    public void updateMyData(BaseUser currentUser, BaseUser newUser) {
+
+    }
 }

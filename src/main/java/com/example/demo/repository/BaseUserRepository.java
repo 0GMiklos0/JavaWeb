@@ -3,5 +3,8 @@ package com.example.demo.repository;
 import com.example.demo.model.BaseUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BaseUserRepository extends JpaRepository<BaseUser, String>{
+import java.util.Optional;
+
+public interface BaseUserRepository extends JpaRepository<BaseUser, Long>{
+    Optional<BaseUser> findByUserName(String userName);
 }
