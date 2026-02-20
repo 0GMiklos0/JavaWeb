@@ -8,5 +8,5 @@ public interface BaseUserService {
     void registerUser(String userName, String password);
     List<BaseUser> findAll();
     BaseUser findOne(String userName);
-    void updateMyData(BaseUser currentUser, BaseUser newUser);
+    void changeMyData(BaseUser currentUser, BaseUser newUser);
 }

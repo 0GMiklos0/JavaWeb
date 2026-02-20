@@ -32,7 +32,9 @@ public class BaseUserServiceImpl implements BaseUserService{
     }
 
     @Override
-    public void updateMyData(BaseUser currentUser, BaseUser newUser) {
-
+    public void changeMyData(BaseUser currentUser, BaseUser newUser) {
+        BaseUser changed = repo.findByUserName(currentUser.getUserName()).orElseThrow();
+        changed.setUserName(newUser.getUserName());
+        changed.setPassword(newUser.getPassword());
     }
 }

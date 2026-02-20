@@ -1,7 +1,6 @@
 package com.example.demo.web;
 
 import com.example.demo.model.BaseUser;
-import com.example.demo.repository.BaseUserRepository;
 import com.example.demo.service.BaseUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +17,6 @@ public class UserControllerImpl implements UserController{
 
     @Override
     public void changeMyData(BaseUser currentUser, BaseUser newUser) {
-
+        service.changeMyData(currentUser, newUser);
     }
 }
