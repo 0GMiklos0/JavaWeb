@@ -13,8 +13,8 @@ import java.util.List;
 public class BaseControllerImpl implements BaseController{
     private final BaseUserService service;
 
-    public boolean login(){
-        return false;
+    public void login(String userName , String passwpord){
+        
     }
 
     public List<BaseUser> allUsers(){
