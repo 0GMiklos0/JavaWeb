@@ -4,8 +4,6 @@ package com.example.demo.web;
 import com.example.demo.model.BaseUser;
 import com.example.demo.service.BaseUserService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -14,6 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 public class BaseControllerImpl implements BaseController{
     private final BaseUserService service;
+
+    public boolean login(){
+        return false;
+    }
 
     public List<BaseUser> allUsers(){
         return service.findAll();

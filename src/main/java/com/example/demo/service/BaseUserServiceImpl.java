@@ -37,4 +37,8 @@ public class BaseUserServiceImpl implements BaseUserService{
         changed.setUserName(newUser.getUserName());
         changed.setPassword(newUser.getPassword());
     }
+
+    public boolean login(){
+        return false;
+    }
 }
