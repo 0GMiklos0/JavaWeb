@@ -9,4 +9,5 @@ public interface BaseUserService {
     List<BaseUser> findAll();
     BaseUser findOne(String userName);
     void changeMyData(BaseUser currentUser, BaseUser newUser);
+    boolean login(String userName, String password);
 }

@@ -15,5 +15,5 @@ public interface BaseController {
     public void registerUser(String userName, String password);
 
     @PostMapping("/")
-    public void login(String userName, String password);
+    public boolean login(String userName, String password);
 }

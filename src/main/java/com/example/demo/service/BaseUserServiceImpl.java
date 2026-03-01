@@ -38,7 +38,8 @@ public class BaseUserServiceImpl implements BaseUserService{
         changed.setPassword(newUser.getPassword());
     }
 
-    public boolean login(){
-        return false;
+    public boolean login(String userName, String password){
+        BaseUser user = repo.findByUserName(userName).orElseThrow();
+        return user.getPassword().equals(password);
     }
 }
