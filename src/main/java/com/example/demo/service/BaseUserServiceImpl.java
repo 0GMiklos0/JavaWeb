@@ -3,8 +3,13 @@ package com.example.demo.service;
 import com.example.demo.model.BaseUser;
 import com.example.demo.repository.BaseUserRepository;
 import lombok.AllArgsConstructor;
+import org.jspecify.annotations.Nullable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -33,13 +38,19 @@ public class BaseUserServiceImpl implements BaseUserService{
 
     @Override
     public void changeMyData(BaseUser currentUser, BaseUser newUser) {
-        BaseUser changed = repo.findByUserName(currentUser.getUserName()).orElseThrow();
-        changed.setUserName(newUser.getUserName());
+        BaseUser changed = repo.findByUserName(currentUser.getUsername()).orElseThrow();
+        changed.setUserName(newUser.getUsername());
         changed.setPassword(newUser.getPassword());
     }
 
     public boolean login(String userName, String password){
         BaseUser user = repo.findByUserName(userName).orElseThrow();
         return user.getPassword().equals(password);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        return repo.findByUserName(username).orElseThrow(() -> new UsernameNotFoundException(username));
     }
 }

@@ -1,10 +1,11 @@
 package com.example.demo.service;
 
 import com.example.demo.model.BaseUser;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface BaseUserService {
+public interface BaseUserService extends UserDetailsService {
     void registerUser(String userName, String password);
     List<BaseUser> findAll();
     BaseUser findOne(String userName);

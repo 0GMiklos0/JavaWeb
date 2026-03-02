@@ -11,9 +11,9 @@ public interface BaseController {
     @GetMapping("/")
     public List<BaseUser> allUsers();
 
-    @PutMapping("/")
+    @PostMapping("/register")
     public void registerUser(String userName, String password);
 
-    @PostMapping("/")
+    @PostMapping("/login")
     public boolean login(String userName, String password);
 }
