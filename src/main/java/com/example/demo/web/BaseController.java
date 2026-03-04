@@ -1,19 +1,21 @@
 package com.example.demo.web;
 
 import com.example.demo.model.BaseUser;
+import com.example.demo.model.LoginResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface BaseController {
     @GetMapping("/")
-    public List<BaseUser> allUsers();
+    List<BaseUser> allUsers();
 
     @PostMapping("/register")
-    public void registerUser(String userName, String password);
+    void registerUser(String userName, String password);
 
     @PostMapping("/login")
-    public boolean login(String userName, String password);
+    LoginResponse login(Principal principal);
 }

@@ -67,21 +67,20 @@ public class DemoApplication {
 
 		@Bean
 		public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-			http
+			return http
 					.csrf(AbstractHttpConfigurer::disable)
 					.authorizeHttpRequests(request ->
 							request.requestMatchers("/register", "/login").permitAll()
-									.requestMatchers("/me").authenticated())
+									.anyRequest().authenticated())
 					.httpBasic(Customizer.withDefaults())
 					.sessionManagement(
 							session -> session.sessionCreationPolicy(
 									SessionCreationPolicy.STATELESS
 							)
 					)
-					.oauth2ResourceServer(oauth ->
-							oauth.jwt(Customizer.withDefaults()));
-
-			return http.build();
+					//.oauth2ResourceServer(oauth ->
+					//		oauth.jwt(Customizer.withDefaults()))
+					.build();
 		}
 	}
 }

@@ -1,8 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.model.BaseUser;
+import com.example.demo.model.LoginResponse;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface BaseUserService extends UserDetailsService {
@@ -10,5 +12,5 @@ public interface BaseUserService extends UserDetailsService {
     List<BaseUser> findAll();
     BaseUser findOne(String userName);
     void changeMyData(BaseUser currentUser, BaseUser newUser);
-    boolean login(String userName, String password);
+    LoginResponse login(Principal principal);
 }

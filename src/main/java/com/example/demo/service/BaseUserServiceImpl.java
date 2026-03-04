@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.BaseUser;
+import com.example.demo.model.LoginResponse;
 import com.example.demo.repository.BaseUserRepository;
 import lombok.AllArgsConstructor;
 import org.jspecify.annotations.Nullable;
@@ -8,7 +9,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
 
@@ -43,9 +46,12 @@ public class BaseUserServiceImpl implements BaseUserService{
         changed.setPassword(newUser.getPassword());
     }
 
-    public boolean login(String userName, String password){
-        BaseUser user = repo.findByUserName(userName).orElseThrow();
-        return user.getPassword().equals(password);
+    public LoginResponse login(Principal principal){
+        BaseUser loggedUser = repo.findByUserName(principal.getName()).orElseThrow();
+
+        return LoginResponse.builder()
+                .userName(loggedUser.getUsername())
+                .build();
     }
 
     @Override
