@@ -73,6 +73,7 @@ public class DemoApplication {
 							request.requestMatchers("/register", "/login").permitAll()
 									.anyRequest().authenticated())
 					.httpBasic(Customizer.withDefaults())
+					.formLogin(Customizer.withDefaults())
 					.sessionManagement(
 							session -> session.sessionCreationPolicy(
 									SessionCreationPolicy.STATELESS
