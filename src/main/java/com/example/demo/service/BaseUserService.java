@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.BaseUser;
+import com.example.demo.model.LoginRequest;
 import com.example.demo.model.LoginResponse;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -12,5 +13,5 @@ public interface BaseUserService extends UserDetailsService {
     List<BaseUser> findAll();
     BaseUser findOne(String userName);
     void changeMyData(BaseUser currentUser, BaseUser newUser);
-    LoginResponse login(Principal principal);
+    LoginResponse login(LoginRequest credentials);
 }

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.BaseUser;
+import com.example.demo.model.LoginRequest;
 import com.example.demo.model.LoginResponse;
 import com.example.demo.repository.BaseUserRepository;
 import lombok.AllArgsConstructor;
@@ -46,8 +47,8 @@ public class BaseUserServiceImpl implements BaseUserService{
         changed.setPassword(newUser.getPassword());
     }
 
-    public LoginResponse login(Principal principal){
-        BaseUser loggedUser = repo.findByUserName(principal.getName()).orElseThrow();
+    public LoginResponse login(LoginRequest credentials){
+        BaseUser loggedUser = repo.findByUserName(credentials.getUserName()).orElseThrow();
 
         return LoginResponse.builder()
                 .userName(loggedUser.getUsername())

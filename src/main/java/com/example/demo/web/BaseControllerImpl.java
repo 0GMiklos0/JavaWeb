@@ -2,6 +2,7 @@ package com.example.demo.web;
 
 
 import com.example.demo.model.BaseUser;
+import com.example.demo.model.LoginRequest;
 import com.example.demo.model.LoginResponse;
 import com.example.demo.service.BaseUserService;
 import lombok.AllArgsConstructor;
@@ -15,8 +16,8 @@ import java.util.List;
 public class BaseControllerImpl implements BaseController{
     private final BaseUserService service;
 
-    public LoginResponse login(Principal principal){
-        return service.login(principal);
+    public LoginResponse login(LoginRequest credentials){
+        return service.login(credentials);
     }
 
     public List<BaseUser> allUsers(){
